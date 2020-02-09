@@ -6,6 +6,30 @@
 
 ## Install From Source
 
+### Windows (MingW-W64-builds)
+
+Install [MingW-W64-builds](http://www.mingw-w64.org/doku.php/download/mingw-builds) and run the following inside a MinGW 32 bit shell:
+
+```sh
+set MINGW_HOME=<your-mingw-w64>\i686-8.1.0-win32-dwarf-rt_v6-rev0\mingw32
+set CPLUS_INCLUDE_PATH=%MINGW_HOME%\include
+set LIBRARY_PATH=%MINGW_HOME%\lib
+set WXWIN=<your-wxWidgets>
+
+git clone --recursive --depth=1 https://github.com/wxFormBuilder/wxFormBuilder
+cd wxFormBuilder
+cmd.exe /C "create_build_files5.bat --disable-monolithic --force-wx-config --wx-version=3.1"
+cd build/3.1/gmake
+mingw32-make config=release
+```
+
+Run:
+
+```sh
+cd ../../../output/
+./wxFormBuilder.exe
+```
+
 ### Windows (MSYS2)
 
 Install [MSYS2](http://msys2.github.io/) and run the following inside a MinGW 32 bit shell:

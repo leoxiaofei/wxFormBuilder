@@ -190,6 +190,9 @@
 			@{
 				m_mgr.AddPane( $name, wxAuiPaneInfo()
 				#ifnotnull $aui_name @{.Name( $aui_name )@}.$docking()
+				#ifequal $center_pane "1" @{.CentrePane()@}
+				#ifequal $default_pane "1" @{.DefaultPane()@}
+				#ifequal $toolbar_pane "1" @{.ToolbarPane()@}
 				#ifnotnull $caption @{.Caption( $caption )@}
 				#ifequal $caption_visible "0" @{.CaptionVisible( $caption_visible )@}
 				#ifequal $close_button "0" @{.CloseButton( $close_button )@}
@@ -214,9 +217,6 @@
 				#ifnotnull $min_size @{.MinSize( $min_size )@}
 				#ifnotnull $max_size @{.MaxSize( $max_size )@}
 				#ifnotnull $aui_layer @{.Layer( $aui_layer )@}
-				#ifequal $center_pane "1" @{.CentrePane()@}
-				#ifequal $default_pane "1" @{.DefaultPane()@}
-				#ifequal $toolbar_pane "1" @{.ToolbarPane()@}
 				); #nl
 			@}
 			@}

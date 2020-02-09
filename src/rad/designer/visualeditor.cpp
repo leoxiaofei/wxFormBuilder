@@ -963,6 +963,9 @@ void VisualEditor::SetupAui( PObjectBase obj, wxWindow* window )
 	if (obj->GetPropertyAsInteger(wxT("default_pane")) != 0) {
 		info.DefaultPane();
 	}
+	if (obj->GetPropertyAsInteger(wxT("toolbar_pane")) != 0) {
+		info.ToolbarPane();
+	}
 
 	if( !obj->IsNull(wxT("caption"))) info.Caption(obj->GetPropertyAsString(wxT("caption")));
 	info.CaptionVisible(obj->GetPropertyAsInteger(wxT("caption_visible")) != 0);
@@ -1013,9 +1016,6 @@ void VisualEditor::SetupAui( PObjectBase obj, wxWindow* window )
 	if( !obj->GetProperty( wxT("min_size" ) )->IsNull() ) info.MinSize( obj->GetPropertyAsSize( wxT("min_size") ) );
 	if( !obj->GetProperty( wxT("max_size" ) )->IsNull() ) info.MaxSize( obj->GetPropertyAsSize( wxT("max_size") ) );
 
-	if (obj->GetPropertyAsInteger(wxT("toolbar_pane")) != 0) {
-		info.ToolbarPane();
-	}
 	if( !obj->IsNull( wxT("aui_position") ) ) info.Position( obj->GetPropertyAsInteger( wxT("aui_position") ));
 	if( !obj->IsNull( wxT("aui_row") ) ) info.Row( obj->GetPropertyAsInteger( wxT("aui_row") ));
     if( !obj->IsNull( wxT("aui_layer") ) ) info.Layer( obj->GetPropertyAsInteger( wxT("aui_layer") ));
