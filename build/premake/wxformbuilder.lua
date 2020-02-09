@@ -96,7 +96,7 @@ project "wxFormBuilder"
             buildoptions{"-gstabs"}
             links       {"bfd", "iberty", "psapi", "imagehlp"}
             if not (wxCompilerName == "mingw64") then
-                links   {"intl"}
+                links   {"z"}
             end
         end
 
