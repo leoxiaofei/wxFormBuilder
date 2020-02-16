@@ -238,6 +238,9 @@ Written by
 			@{ #nl
 				m_mgr.AddPane( $name, wxAuiPaneInfo()
 				#ifnotnull $aui_name @{.Name( $aui_name )@}.$docking()
+				#ifequal $center_pane "1" @{.CentrePane()@}
+				#ifequal $default_pane "1" @{.DefaultPane()@}
+				#ifequal $toolbar_pane "1" @{.ToolbarPane()@}
 				#ifnotnull $caption @{.Caption( $caption )@}
 				#ifequal $caption_visible "0" @{.CaptionVisible( $caption_visible )@}
 				#ifequal $close_button "0" @{.CloseButton( $close_button )@}
@@ -262,9 +265,6 @@ Written by
 				#ifnotnull $min_size @{.MinSize( $min_size )@}
 				#ifnotnull $max_size @{.MaxSize( $max_size )@}
 				#ifnotnull $aui_layer @{.Layer( $aui_layer )@}
-				#ifequal $center_pane "1" @{.CentrePane()@}
-				#ifequal $default_pane "1" @{.DefaultPane()@}
-				#ifequal $toolbar_pane "1" @{.ToolbarPane()@}
 				); #nl
 			@}
 			@}
@@ -304,7 +304,10 @@ Written by
 			#ifequal #parent $aui_managed "1"
 			@{ #nl
 				m_mgr.AddPane( $name, wxAuiPaneInfo()#ifnotnull $aui_name
-				@{.Name( $aui_name )@}.$docking()#ifnotnull $caption
+				@{.Name( $aui_name )@}.$docking()#ifequal $center_pane "1"
+				@{.CentrePane()@}#ifequal $default_pane "1"
+				@{.DefaultPane()@}#ifequal $toolbar_pane "1"
+				@{.ToolbarPane()@}#ifnotnull $caption
 				@{.Caption( $caption )@}#ifequal $caption_visible "0"
 				@{.CaptionVisible( $caption_visible )@}#ifequal $close_button "0"
 				@{.CloseButton( $close_button )@}#ifequal $maximize_button "1"
@@ -329,10 +332,7 @@ Written by
 				@{.Floatable( $floatable )@}#ifnotnull $aui_row
 				@{.Row( $aui_row )@}#ifnotnull $aui_position
 				@{.Position( $aui_position )@}#ifnotnull $aui_layer
-				@{.Layer( $aui_layer )@}#ifequal $center_pane "1"
-				@{.CentrePane()@}#ifequal $default_pane "1"
-				@{.DefaultPane()@}#ifequal $toolbar_pane "1"
-				@{.ToolbarPane()@}
+				@{.Layer( $aui_layer )@}
 				);
 			@}
 			@}
